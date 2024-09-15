@@ -1,0 +1,42 @@
+[
+    {
+      "restaurant_id": 1,
+      "product": "Margherita Pizza"
+    },
+    {
+      "restaurant_id": 1,
+      "product": "Caesar Salad"
+    },
+    {
+      "restaurant_id": 2,
+      "product": "Spaghetti Carbonara"
+    },
+    {
+      "restaurant_id": 2,
+      "product": "Tiramisu"
+    },
+    {
+      "restaurant_id": 3,
+      "product": "Fish and Chips"
+    },
+    {
+      "restaurant_id": 3,
+      "product": "Beef Wellington"
+    },
+    {
+      "restaurant_id": 4,
+      "product": "Croissant"
+    },
+    {
+      "restaurant_id": 4,
+      "product": "Coq au Vin"
+    },
+    {
+      "restaurant_id": 5,
+      "product": "Schnitzel"
+    },
+    {
+      "restaurant_id": 5,
+      "product": "Bratwurst"
+    }
+  ]
