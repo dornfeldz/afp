@@ -3,7 +3,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi2";
 
 function Header() {
   return (
-    <div className="flex items-center justify-between h-16 px-4">
+    <div className="flex items-center justify-between h-16 px-4 shadow-[0px_2px_4px_rgba(0,0,0,0.1)]">
       <h1 className="text-4xl font-extrabold">
         Tasty<span className="text-[#e67e22]">Go</span>
       </h1>
@@ -13,7 +13,7 @@ function Header() {
           name="main"
           id="main"
           placeholder="Search for a restaurant..."
-          className="bg-[#fae5d3] text-[#888] py-1 px-4 rounded-l-full"
+          className="bg-[#fae5d3] text-[#888] py-1 px-4 rounded-l-full focus:outlne-[#888]"
         />
         <button
           type="submit"
