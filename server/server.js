@@ -51,6 +51,19 @@ app.get("/product/:id", async (req, res) => {
     return res.status(500).json(err.message);
   }
 });
+app.post("/restaurant", async (req, res) => {
+  let restaurant = req.body;
+  try {
+    console.log("restaruant posted")
+    console.log(restaurant)
+    let saved = {}
+    saved.id = 99
+    return res.status(201).json(saved.id);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json(err.message);
+  }
+});
 
 const main = async () => {
 
