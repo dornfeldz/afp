@@ -4,11 +4,11 @@ import { HiOutlineXMark } from "react-icons/hi2";
 const CartModal = ({ isOpen, onClose, cartItems }) => {
   return (
     <div
-      className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ${
+      className={`fixed top-0 right-0 h-full w-72 bg-white shadow-lg transform transition-transform duration-300 ${
         isOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
-      <div className="flex flex-col justify-between h-full px-4">
+      <div className="flex flex-col justify-between h-full px-4 pb-6">
         <div>
           <button className="h-16 mb-10 text-3xl font-bold" onClick={onClose}>
             <HiOutlineXMark />
