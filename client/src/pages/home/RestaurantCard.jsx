@@ -1,6 +1,9 @@
 function RestaurantCard({ restaurant }) {
   return (
-    <div key={restaurant.id} className="bg-[#fae5d3] p-4 rounded-lg shadow-md">
+    <div
+      key={restaurant.id}
+      className="bg-[#fae5d3] p-4 rounded-lg shadow-md w-96 flex-shrink-0"
+    >
       <h2 className="text-xl font-bold">Restaurant {restaurant.id}</h2>
       <p className="text-[#888]">
         <strong>Telephone:</strong> {restaurant.telephone_number}
