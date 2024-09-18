@@ -2,7 +2,7 @@ import RestaurantsSlide from "./RestaurantsSlide";
 
 function Home() {
   return (
-    <div className="h-screen">
+    <div>
       <h1 className="mt-20 text-4xl font-extrabold text-center">
         Welcome to Tasty<span className="text-[#e67e22]">Go</span>
       </h1>
