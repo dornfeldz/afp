@@ -1,7 +1,16 @@
-import { HiMagnifyingGlass } from "react-icons/hi2";
-import { HiOutlineShoppingCart } from "react-icons/hi2";
+import React, { useState } from "react";
+import { HiMagnifyingGlass, HiOutlineShoppingCart } from "react-icons/hi2";
+import CartModal from "../pages/cart/Cart"; // Import the CartModal component
 
 function Header() {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const cartItems = [
+    { name: "Item 1", price: 10 },
+    { name: "Item 2", price: 20 },
+  ];
+
+  const toggleCart = () => setIsCartOpen(!isCartOpen);
+
   return (
     <div className="flex items-center justify-between h-16 px-4 shadow-[0px_2px_4px_rgba(0,0,0,0.1)]">
       <h1 className="text-4xl font-extrabold">
@@ -13,25 +22,33 @@ function Header() {
           name="main"
           id="main"
           placeholder="Search for a restaurant..."
-          className="bg-[#fae5d3] text-[#888] py-1 px-4 rounded-l-full focus:outlne-[#888]"
+          className="bg-[#fae5d3] text-[#888] py-1 px-4 rounded-l-full focus:outline-[#888]"
         />
         <button
           type="submit"
-          className="bg-[#e67e22] py-2 px-3 rounded-r-full text-[#fdf2e9] "
+          className="bg-[#e67e22] py-2 px-3 rounded-r-full text-[#fdf2e9]"
         >
           <HiMagnifyingGlass className="text-[#fae5d3]" />
         </button>
       </form>
-      <div className="flex gap-2">
+      <div className="flex items-center gap-2">
         <img
           src="https://i.imgur.com/tpTbyMY.jpeg"
-          alt="default profile picture"
-          className="border-2 border-white rounded-full size-9"
+          alt="User Avatar"
+          className="w-10 h-10 border-2 border-white rounded-full"
         />
-        <div className="flex items-center justify-center border-2 border-white rounded-full size-9 bg-[#fae5d3] text-[#888]">
-          <HiOutlineShoppingCart className="" />
-        </div>
+        <button
+          onClick={toggleCart}
+          className="flex items-center justify-center text-2xl border-2 border-white rounded-full size-10"
+        >
+          <HiOutlineShoppingCart />
+        </button>
       </div>
+      <CartModal
+        isOpen={isCartOpen}
+        onClose={toggleCart}
+        cartItems={cartItems}
+      />
     </div>
   );
 }
