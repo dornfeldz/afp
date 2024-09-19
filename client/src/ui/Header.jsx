@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { HiMagnifyingGlass, HiOutlineShoppingCart } from "react-icons/hi2";
-import CartModal from "../pages/cart/Cart"; // Import the CartModal component
+import CartModal from "./Cart"; // Import the CartModal component
+import { Link } from "react-router-dom";
 
 function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -13,9 +14,11 @@ function Header() {
 
   return (
     <div className="flex items-center justify-between h-16 px-4 shadow-[0px_2px_4px_rgba(0,0,0,0.1)]">
-      <h1 className="text-4xl font-extrabold">
-        Tasty<span className="text-[#e67e22]">Go</span>
-      </h1>
+      <Link to="/">
+        <h1 className="text-4xl font-extrabold">
+          Tasty<span className="text-[#e67e22]">Go</span>
+        </h1>
+      </Link>
       <form className="flex items-center">
         <input
           type="text"

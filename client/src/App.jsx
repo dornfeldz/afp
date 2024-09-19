@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
-import Cart from "./pages/cart/Cart";
 import Home from "./pages/home/Home";
-import CartModal from "./pages/cart/Cart";
+import CartModal from "./ui/Cart";
+import Restaurant from "./pages/restaurant/Restaurant";
 import { useState } from "react";
 
 const router = createBrowserRouter([
@@ -15,8 +15,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/cart",
-        element: <Cart />,
+        path: "/restaurant/:id",
+        element: <Restaurant />,
       },
     ],
   },
