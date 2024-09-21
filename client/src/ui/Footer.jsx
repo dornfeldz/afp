@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-[#fae5d3] text-center p-4">
+    <footer className="bg-[#fae5d3] text-center p-4 mt-20">
       <nav className="mb-10">
         <ul className="flex justify-center space-x-4">
           <li>
@@ -37,7 +37,9 @@ function Footer() {
           </li>
         </ul>
       </nav>
-      <p className="mt-4">&copy; 2021 TastyGo. All rights reserved.</p>
+      <p className="mt-4">
+        &copy; {new Date().getFullYear()} TastyGo. All rights reserved.
+      </p>
     </footer>
   );
 }
