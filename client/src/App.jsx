@@ -53,23 +53,9 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const cartItems = [
-    { name: "Item 1", price: 10 },
-    { name: "Item 2", price: 20 },
-  ];
-
-  const openCart = () => setIsCartOpen(true);
-  const closeCart = () => setIsCartOpen(false);
-
   return (
     <div>
       <RouterProvider router={router} />
-      <CartModal
-        isOpen={isCartOpen}
-        onClose={closeCart}
-        cartItems={cartItems}
-      />
     </div>
   );
 }
