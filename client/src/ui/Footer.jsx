@@ -1,5 +1,45 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
-  return <div className="h-20">Footer</div>;
+  return (
+    <footer className="bg-[#fae5d3] text-center p-4">
+      <nav className="mb-10">
+        <ul className="flex justify-center space-x-4">
+          <li>
+            <Link href="/contact" className="hover:underline">
+              Contact
+            </Link>
+          </li>
+          <li>
+            <Link to="/for-customers" className="hover:underline">
+              For Customers
+            </Link>
+          </li>
+          <li>
+            <Link to="/for-delivery-staff" className="hover:underline">
+              For Delivery Staff
+            </Link>
+          </li>
+          <li>
+            <Link to="/terms-and-conditions" className="hover:underline">
+              Terms and Conditions
+            </Link>
+          </li>
+          <li>
+            <Link to="/privacy-policy" className="hover:underline">
+              Privacy Policy
+            </Link>
+          </li>
+          <li>
+            <Link to="/career" className="hover:underline">
+              Career
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <p className="mt-4">&copy; 2021 TastyGo. All rights reserved.</p>
+    </footer>
+  );
 }
 
 export default Footer;
