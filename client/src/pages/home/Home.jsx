@@ -12,7 +12,7 @@ function Home() {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row items-center justify-between w-[80%] max-w-5xl mx-auto mt-16 px-4 mb-12">
+      <div className="flex flex-col md:flex-row items-center justify-between w-[80%] max-w-5xl mx-auto mt-16 px-4 mb-10">
         <div className="md:w-[50%] text-center md:text-left">
           <h1 className="text-5xl font-extrabold">
             Welcome to Tasty<span className="text-[#e67e22]">Go</span>
@@ -36,6 +36,7 @@ function Home() {
         </div>
       </div>
       <div ref={targetRef}>
+        <div className="h-10 border border-b w-max"></div>
         <RestaurantsSlide title={"Popular right now"} />
         <RestaurantsSlide title={"For burger lovers"} />
         <RestaurantsSlide title={"Italian vibes"} />
