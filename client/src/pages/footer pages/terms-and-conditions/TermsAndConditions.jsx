@@ -4,7 +4,8 @@ function TermsAndConditions() {
       <h1>Terms and Conditions for TastyGo</h1>
 
       <p>
-        <strong>Effective Date:</strong> 2024-01-01
+        <strong>Effective Date:</strong>
+        <br /> 2024-01-01
       </p>
 
       <p>
@@ -121,6 +122,7 @@ function TermsAndConditions() {
 
       <p>
         <strong>TastyGo Customer Support</strong>
+        <br />
         Email: info@tastygo.com Phone: (555) 123-4567 Address: 1234 Market St,
         San Francisco, CA 94103
       </p>

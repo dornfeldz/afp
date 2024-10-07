@@ -3,7 +3,8 @@ function PrivacyPolicy() {
     <div className="w-[60%] h-[80vh] overflow-y-scroll mx-auto mt-8 bg-white p-8 rounded-lg shadow-md">
       <h1>Privacy Policy for TastyGo</h1>
       <p>
-        <strong>Effective Date:</strong> 2024-01-01
+        <strong>Effective Date:</strong>
+        <br /> 2024-01-01
       </p>
 
       <p>
@@ -24,32 +25,34 @@ function PrivacyPolicy() {
       <h3>a. Personal Information</h3>
       <ul>
         <li>
-          <strong>Account Information:</strong> When you create an account, we
-          may collect your name, email address, phone number, and delivery
-          address.
+          <strong>Account Information:</strong>
+          <br /> When you create an account, we may collect your name, email
+          address, phone number, and delivery address.
         </li>
         <li>
-          <strong>Payment Information:</strong> We collect payment details, such
-          as credit card information or third-party payment service information,
-          to process your orders.
+          <strong>Payment Information:</strong>
+          <br /> We collect payment details, such as credit card information or
+          third-party payment service information, to process your orders.
         </li>
         <li>
-          <strong>Order History:</strong> Details about your previous orders,
-          preferred restaurants, and items.
+          <strong>Order History:</strong>
+          <br /> Details about your previous orders, preferred restaurants, and
+          items.
         </li>
       </ul>
 
       <h3>b. Automatically Collected Information</h3>
       <ul>
         <li>
-          <strong>Device Information:</strong> Information about the device you
-          use to access the Service, including your IP address, browser type,
-          and operating system.
+          <strong>Device Information:</strong>
+          <br /> Information about the device you use to access the Service,
+          including your IP address, browser type, and operating system.
         </li>
         <li>
-          <strong>Usage Information:</strong> Data about your interactions with
-          the Service, such as pages viewed, time spent on the site, and actions
-          taken (e.g., orders placed).
+          <strong>Usage Information:</strong>
+          <br /> Data about your interactions with the Service, such as pages
+          viewed, time spent on the site, and actions taken (e.g., orders
+          placed).
         </li>
       </ul>
 
@@ -64,28 +67,32 @@ function PrivacyPolicy() {
       <p>We use the information we collect to:</p>
       <ul>
         <li>
-          <strong>Provide Services:</strong> Fulfill your food delivery orders
-          and communicate with you about the status of your orders.
+          <strong>Provide Services:</strong>
+          <br /> Fulfill your food delivery orders and communicate with you
+          about the status of your orders.
         </li>
         <li>
-          <strong>Improve User Experience:</strong> Tailor the content,
-          restaurant suggestions, and offers based on your preferences.
+          <strong>Improve User Experience:</strong>
+          <br /> Tailor the content, restaurant suggestions, and offers based on
+          your preferences.
         </li>
         <li>
-          <strong>Process Payments:</strong> Manage payment information securely
-          for order transactions.
+          <strong>Process Payments:</strong>
+          <br /> Manage payment information securely for order transactions.
         </li>
         <li>
-          <strong>Marketing:</strong> Send you promotional materials and updates
-          about TastyGo, with your consent.
+          <strong>Marketing:</strong>
+          <br /> Send you promotional materials and updates about TastyGo, with
+          your consent.
         </li>
         <li>
-          <strong>Customer Support:</strong> Assist with issues, inquiries, and
-          complaints.
+          <strong>Customer Support:</strong>
+          <br /> Assist with issues, inquiries, and complaints.
         </li>
         <li>
-          <strong>Legal Compliance:</strong> Comply with legal obligations and
-          enforce our terms and policies.
+          <strong>Legal Compliance:</strong>
+          <br /> Comply with legal obligations and enforce our terms and
+          policies.
         </li>
       </ul>
 
@@ -96,19 +103,19 @@ function PrivacyPolicy() {
       </p>
       <ul>
         <li>
-          <strong>Service Providers:</strong> With third-party vendors who
-          assist us in operating the website, processing payments, or delivering
-          your food.
+          <strong>Service Providers:</strong>
+          <br /> With third-party vendors who assist us in operating the
+          website, processing payments, or delivering your food.
         </li>
         <li>
-          <strong>Business Transfers:</strong> In the event of a merger,
-          acquisition, or sale of our assets, your information may be
-          transferred to the new entity.
+          <strong>Business Transfers:</strong>
+          <br /> In the event of a merger, acquisition, or sale of our assets,
+          your information may be transferred to the new entity.
         </li>
         <li>
-          <strong>Legal Requirements:</strong> When required to do so by law, or
-          if necessary to protect the rights, property, or safety of TastyGo,
-          our customers, or others.
+          <strong>Legal Requirements:</strong>
+          <br /> When required to do so by law, or if necessary to protect the
+          rights, property, or safety of TastyGo, our customers, or others.
         </li>
       </ul>
 
@@ -136,19 +143,21 @@ function PrivacyPolicy() {
       </p>
       <ul>
         <li>
-          <strong>Access:</strong> You can request access to your personal data.
+          <strong>Access:</strong>
+          <br /> You can request access to your personal data.
         </li>
         <li>
-          <strong>Correction:</strong> You can request that we correct any
-          inaccuracies in your data.
+          <strong>Correction:</strong>
+          <br /> You can request that we correct any inaccuracies in your data.
         </li>
         <li>
-          <strong>Deletion:</strong> You can request that we delete your
-          personal data, subject to certain legal exceptions.
+          <strong>Deletion:</strong>
+          <br /> You can request that we delete your personal data, subject to
+          certain legal exceptions.
         </li>
         <li>
-          <strong>Opt-out:</strong> You can opt-out of marketing communications
-          at any time.
+          <strong>Opt-out:</strong>
+          <br /> You can opt-out of marketing communications at any time.
         </li>
       </ul>
 
@@ -192,6 +201,7 @@ function PrivacyPolicy() {
 
       <p>
         <strong>TastyGo Customer Support</strong>
+        <br />
         Email: info@tastygo.com Phone: (555) 123-4567 Address: 1234 Market St,
         San Francisco, CA 94103
       </p>
