@@ -35,11 +35,13 @@ function Header() {
         </button>
       </form>
       <div className="flex items-center gap-2">
-        <img
-          src="https://i.imgur.com/tpTbyMY.jpeg"
-          alt="User Avatar"
-          className="w-10 h-10 border-2 border-white rounded-full"
-        />
+        <Link to="/profile">
+          <img
+            src="https://i.imgur.com/tpTbyMY.jpeg"
+            alt="User Avatar"
+            className="w-10 h-10 border-2 border-white rounded-full"
+          />
+        </Link>
         <button
           onClick={toggleCart}
           className="flex items-center justify-center text-2xl border-2 border-white rounded-full size-10"
