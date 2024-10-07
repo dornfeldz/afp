@@ -6,7 +6,7 @@ function Footer() {
       <nav className="mb-10">
         <ul className="flex justify-center space-x-4">
           <li>
-            <Link href="/contact" className="hover:underline">
+            <Link to="/contact" className="hover:underline">
               Contact
             </Link>
           </li>
