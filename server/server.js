@@ -27,50 +27,48 @@ const restaurantSchema = new mongoose.Schema({
   },
   adress: {
     street: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     city: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     zipcode: {
-        type: Number,
-        required: true
-    }
-},
-location: {
-  type: {
-      type: String,
-      enum: ['Point'],
-      default: 'Point'
+      type: Number,
+      required: true,
+    },
   },
-  coordinates: {
+  location: {
+    type: {
+      type: String,
+      enum: ["Point"],
+      default: "Point",
+    },
+    coordinates: {
       type: [Number],
-      required: true
-  } 
-
- },
+      required: true,
+    },
+  },
 
   menu: [],
 });
 
 const menuSchema = new mongoose.Schema({
-
   restaurant: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: "Restaurant"
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "Restaurant",
   },
 
   menu: {
-      type: String,
-      required: true
-  } ,
+    type: String,
+    required: true,
+  },
   price: {
-      type: Number,
-      required: true
-  }
-})
+    type: Number,
+    required: true,
+  },
+});
 
 //Adding the schemas end ----------------------------------
 
@@ -79,7 +77,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/restaurants", async (req, res) => {
- return res.status(200).json("restaurants");
+  return res.status(200).json("restaurants");
 });
 /*app.get("/restaurant/:id", async (req, res) => {
   const id = req.params.id;
