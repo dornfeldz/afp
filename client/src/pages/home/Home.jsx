@@ -2,8 +2,25 @@ import { useRef } from "react";
 import RestaurantsSlide from "./RestaurantsSlide";
 
 function Home() {
-  const targetRef = useRef(null);
+  const [restaurants, setRestaurants] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/restaurants");
+        const data = await response.json();
+        setRestaurants(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchRestaurants();
+  }, []);
+
+  const targetRef = useRef(null);
   const handleScroll = () => {
     if (targetRef.current) {
       targetRef.current.scrollIntoView({ behavior: "smooth" });

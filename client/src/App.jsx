@@ -10,6 +10,8 @@ import PrivacyPolicy from "./pages/footer pages/privacy-policy/PrivacyPolicy";
 import Career from "./pages/footer pages/career/Career";
 import ForCustomers from "./pages/footer pages/for-customers/ForCustomers";
 import ForDeliveryStaff from "./pages/footer pages/for-delivery-staff/ForDeliveryStaff";
+import Signup from "./pages/signup/Signup";
+import Profile from "./pages/profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +50,15 @@ const router = createBrowserRouter([
         path: "/for-delivery-staff",
         element: <ForDeliveryStaff />,
       },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
     ],
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
   },
 ]);
 

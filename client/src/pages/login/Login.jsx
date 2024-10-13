@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Signup() {
+function Login() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +17,7 @@ function Signup() {
         Tasty<span className="text-[#e67e22]">Go</span>
       </h1>
       <div className="w-full max-w-md p-8 space-y-6">
-        <h1 className="text-2xl font-bold text-center">Sign up!</h1>
+        <h1 className="text-2xl font-bold text-center">Log in!</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -67,4 +67,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Login;
