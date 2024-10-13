@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const PORT = 8000;
-//const restaruantData = require("./restaruant_dummy_data.json");
-//const produtctDatat = require("./item_dummy_data.json");
+const RestaurantModel = require("./models/Restaurants");
+
 
 require("dotenv").config();
 const { MONGO_URL } = process.env;
@@ -11,73 +11,21 @@ if (!MONGO_URL) {
   console.error("Missing MONGO_URL environment variable");
   process.exit(1);
 }
-//Setting up the database
-// Adding schemas start ----------------------------------
-const restaurantSchema = new mongoose.Schema({
-  name: String,
-  bio: String,
-  profilePicture: String,
-  cover: String,
-  address: String,
-  telephone: [Number],
-  email: {
-    type: String,
-    required: true,
-    lowercase: true,
-  },
-  adress: {
-    street: {
-      type: String,
-      required: true,
-    },
-    city: {
-      type: String,
-      required: true,
-    },
-    zipcode: {
-      type: Number,
-      required: true,
-    },
-  },
-  location: {
-    type: {
-      type: String,
-      enum: ["Point"],
-      default: "Point",
-    },
-    coordinates: {
-      type: [Number],
-      required: true,
-    },
-  },
-
-  menu: [],
-});
-
-const menuSchema = new mongoose.Schema({
-  restaurant: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: "Restaurant",
-  },
-
-  menu: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-});
-
-//Adding the schemas end ----------------------------------
 
 const app = express();
 
 app.use(express.json());
 
 app.get("/restaurants", async (req, res) => {
-  return res.status(200).json("restaurants");
+  try {
+    let restaruants = await RestaurantModel.find({});
+    if (!restaruants) {
+      return res.status(501).json("Restaruants not exist");
+    } 
+    return res.status(200).json(restaruants);
+  } catch (err) {
+    return res.status(500).json(err.message);
+  }
 });
 /*app.get("/restaurant/:id", async (req, res) => {
   const id = req.params.id;
