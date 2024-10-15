@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const { type } = require("os")
 
 const usersSchema = new mongoose.Schema({
     first_name: {
@@ -37,4 +36,4 @@ const usersSchema = new mongoose.Schema({
 }
 )
 
-module.exports = mongoose.model("Users", restaurantSchema)
+module.exports = mongoose.model("Users", usersSchema)
