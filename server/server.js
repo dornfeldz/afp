@@ -51,6 +51,18 @@ app.get("/users", async (req, res) => {
     return res.status(500).json(err.message);
   }
 });
+app.get("/user/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    let user = await UserModel.find({_id: id});
+    if (!user) {
+      return res.status(501).json("User not exist");
+    } 
+    return res.status(200).json(user);
+  } catch (err) {
+    return res.status(500).json(err.message);
+  }
+});
 
 
 const main = async () => {
