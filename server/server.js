@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const PORT = 8000;
 const RestaurantModel = require("./models/Restaurants");
+const UserModel = require("./models/Users")
 
 
 require("dotenv").config();
@@ -35,6 +36,17 @@ app.get("/restaurant/:id", async (req, res) => {
       return res.status(501).json("Restaruant not exist");
     } 
     return res.status(200).json(restaruant);
+  } catch (err) {
+    return res.status(500).json(err.message);
+  }
+});
+app.get("/users", async (req, res) => {
+  try {
+    let users = await UserModel.find({});
+    if (!users) {
+      return res.status(501).json("Users not exist");
+    } 
+    return res.status(200).json(users);
   } catch (err) {
     return res.status(500).json(err.message);
   }
