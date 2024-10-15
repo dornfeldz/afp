@@ -27,6 +27,18 @@ app.get("/restaurants", async (req, res) => {
     return res.status(500).json(err.message);
   }
 });
+app.get("/restaurant/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    let restaruant = await RestaurantModel.find({_id: id });
+    if (!restaruant) {
+      return res.status(501).json("Restaruant not exist");
+    } 
+    return res.status(200).json(restaruant);
+  } catch (err) {
+    return res.status(500).json(err.message);
+  }
+});
 /*app.get("/restaurant/:id", async (req, res) => {
   const id = req.params.id;
 
