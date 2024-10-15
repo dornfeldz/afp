@@ -1,6 +1,4 @@
-const { timeStamp } = require("console")
 const mongoose = require("mongoose")
-const { type } = require("os")
 
 const restaurantSchema = new mongoose.Schema({
     name: {
@@ -34,9 +32,6 @@ const restaurantSchema = new mongoose.Schema({
             require: true
         }
     },
-//An idea for saving the coordinates of the restaurant
-   //Asked Claude for this idea, using GeoJSON
-
    location: {
     type: {
         type: String,
