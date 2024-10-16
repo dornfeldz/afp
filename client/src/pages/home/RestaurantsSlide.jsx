@@ -1,14 +1,31 @@
-import data from "../../../../server/restaruant_dummy_data.json";
+import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 
 function RestaurantsSlide({ title }) {
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/restaurants");
+        const data = await response.json();
+        setRestaurants(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchRestaurants();
+  }, []);
+
+  console.log(restaurants);
   return (
     <div className="mb-12 ">
       <h2 className="ml-5 text-2xl font-semibold">{title}</h2>
       <div className="overflow-x-scroll custom-scrollbar">
         <div className="flex gap-4 mt-6 mb-2 ml-2">
-          {data.map((restaurant) => (
-            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+          {restaurants.map((restaurant) => (
+            <RestaurantCard key={restaurant._id} restaurant={restaurant} />
           ))}
         </div>
       </div>
