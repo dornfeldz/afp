@@ -23,8 +23,12 @@ function Restaurant() {
 
   return (
     <div>
-      <div className="w-full h-32 bg-[#c2c2c2] mb-10 overflow-hidden object-cover">
-        <img src={restaurant.cover} alt="restaurant cover image" />
+      <div className="w-full h-32 bg-[#c2c2c2] mb-10 overflow-hidden">
+        <img
+          src={restaurant.cover}
+          alt="restaurant cover image"
+          className="object-cover w-full h-full"
+        />
       </div>
       <div className="translate-y-[-50%]">
         <img

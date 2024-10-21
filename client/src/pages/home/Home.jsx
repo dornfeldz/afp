@@ -37,9 +37,9 @@ function Home() {
       </div>
       <div ref={targetRef}>
         <div className="h-10 border border-b w-max"></div>
-        <RestaurantsSlide title={"Popular right now"} />
-        <RestaurantsSlide title={"For burger lovers"} reverse={true} />
-        <RestaurantsSlide title={"Italian vibes"} />
+        <RestaurantsSlide title={"Sponsored"} />
+        <RestaurantsSlide title={"Popular right now"} reverse={true} />
+        <RestaurantsSlide title={"Near you"} />
       </div>
     </div>
   );
