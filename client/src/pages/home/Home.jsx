@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import RestaurantsSlide from "./RestaurantsSlide";
+import RestaurantCard from "./RestaurantCard";
 
 function Home() {
   const targetRef = useRef(null);
@@ -37,7 +38,7 @@ function Home() {
       <div ref={targetRef}>
         <div className="h-10 border border-b w-max"></div>
         <RestaurantsSlide title={"Popular right now"} />
-        <RestaurantsSlide title={"For burger lovers"} />
+        <RestaurantsSlide title={"For burger lovers"} reverse={true} />
         <RestaurantsSlide title={"Italian vibes"} />
       </div>
     </div>
