@@ -4,6 +4,8 @@ const cors = require("cors");
 const PORT = 8000;
 const RestaurantModel = require("./models/Restaurants");
 const UserModel = require("./models/Users");
+const OrderModel = require("./models/Orders");
+
 
 require("dotenv").config();
 const { MONGO_URL } = process.env;
@@ -62,6 +64,26 @@ app.get("/user/:id", async (req, res) => {
     return res.status(200).json(user);
   } catch (err) {
     return res.status(500).json(err.message);
+  }
+});
+app.post("/orders", async (req, res) => {
+  try {
+    const { order_number, restaurant, items, address, total_price, tip } = req.body;
+
+    const newOrder = new OrderModel({
+      order_number,
+      restaurant,
+      items,
+      address,
+      total_price,
+      tip,
+    });
+
+    await newOrder.save();
+
+    return res.status(201).json(newOrder);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
   }
 });
 
