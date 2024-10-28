@@ -37,6 +37,9 @@ const ordersSchema = new mongoose.Schema({
         type: Number,
         required: true
     }
+},
+{
+    timestamps: true
 });
 
 module.exports = mongoose.model("Order", ordersSchema);
