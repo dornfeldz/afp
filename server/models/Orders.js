@@ -1,60 +1,42 @@
-const mongoose = require("mongoose")
-const { type } = require("os")
+const mongoose = require("mongoose");
 
 const ordersSchema = new mongoose.Schema({
-
     order_number: {
         type: Number,
-        require: true
+        required: true
     },
     restaurant: {
-        type: mongoose.SchemaTypes.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Restaurant"
     },
-    items: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "Product"
-        //Ez asszem még nincs meg
-    },
-    adress: {
+    items: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Product"
+        }
+    ],
+    address: {
         street: {
             type: String,
-            require: true
+            required: true
         },
         city: {
             type: String,
-            require: true
+            required: true
         },
         zipcode: {
             type: Number,
-            require: true
+            required: true
         }
     },
     total_price: {
         type: Number,
-        require: true
+        required: true
     },
     tip: {
         type: Number,
-        require: true
+        required: true
     }
-    //Ideas for later
-    /*order_date: {
-        type: Date,
-        require: true
-    },
-    delivery_date: {
-        type: Date,
-        require: true
-    },
-    status: {
-        type: String,
-        require: true
-    }*/ 
-   //Ideas for later
+});
 
-    
-}
-)
-
-module.exports = mongoose.model("Orders", restaurantSchema)
+module.exports = mongoose.model("Order", ordersSchema);
