@@ -1,3 +1,5 @@
+// Zoli módosítást kér, majd meg kell csinálni
+
 const mongoose = require("mongoose")
 
 const menuSchema = new mongoose.Schema({
@@ -17,11 +19,8 @@ const menuSchema = new mongoose.Schema({
     price: {
         type: Number,
         require: true
-    },
-    image: {
-        type: String,
-        require: true
     }
+    
 
 
 
