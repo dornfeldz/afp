@@ -5,14 +5,14 @@ const mongoose = require("mongoose")
 const restaurantSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     bio: String,
     profilePicture: String,
     cover: String,
     email: {
         type: String,
-        require: true,
+        required: true,
         lowercase: true
     },
     telephone: Number,
@@ -23,15 +23,15 @@ const restaurantSchema = new mongoose.Schema({
     adress: {
         street: {
             type: String,
-            require: true
+            required: true
         },
         city: {
             type: String,
-            require: true
+            required: true
         },
         zipcode: {
             type: Number,
-            require: true
+            required: true
         }
     },
    location: {
