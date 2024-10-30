@@ -5,6 +5,7 @@ const PORT = 8000;
 const RestaurantModel = require("./models/Restaurants");
 const UserModel = require("./models/Users");
 const OrderModel = require("./models/Orders");
+const MenuModel = require("./models/Menu");
 
 
 require("dotenv").config();
@@ -62,6 +63,27 @@ app.get("/user/:id", async (req, res) => {
       return res.status(501).json("User not exist");
     }
     return res.status(200).json(user);
+  } catch (err) {
+    return res.status(500).json(err.message);
+  }
+});
+app.get("/menus/:restaruantId", async (req, res) => {
+  const id = req.params.restaruantId;
+  try {
+    let restaruant = await RestaurantModel.findById(id);
+    if (!restaruant) {
+      return res.status(501).json("Restaruant not exist");
+    }
+    if(!restaruant.menu){
+      return res.status(501).json("Restaruants menu is empty");
+    }
+    if(!restaruant.menu.length === 0){
+      return res.status(501).json("Restaruants menu is empty");
+    }
+    const menus = await Promise.all(
+      restaruant.menu.map(element => MenuModel.findById(element))
+    );
+    return res.status(200).json(menus);
   } catch (err) {
     return res.status(500).json(err.message);
   }
