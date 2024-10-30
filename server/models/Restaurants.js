@@ -1,3 +1,5 @@
+// Zoli módosítást kér, majd meg kell csinálni
+
 const mongoose = require("mongoose")
 
 const restaurantSchema = new mongoose.Schema({
@@ -46,7 +48,10 @@ const restaurantSchema = new mongoose.Schema({
    },
     
 
-    menu: []
+    menu: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Menu"
+    }],
     
 },
 {
