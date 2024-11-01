@@ -7,7 +7,6 @@ const UserModel = require("./models/Users");
 const OrderModel = require("./models/Orders");
 const MenuModel = require("./models/Menu");
 
-
 require("dotenv").config();
 const { MONGO_URL } = process.env;
 
@@ -67,21 +66,21 @@ app.get("/user/:id", async (req, res) => {
     return res.status(500).json(err.message);
   }
 });
-app.get("/menus/:restaruantId", async (req, res) => {
-  const id = req.params.restaruantId;
+app.get("/menus/:restaurantId", async (req, res) => {
+  const id = req.params.restaurantId;
   try {
-    let restaruant = await RestaurantModel.findById(id);
-    if (!restaruant) {
-      return res.status(501).json("Restaruant not exist");
+    let restaurant = await RestaurantModel.findById(id);
+    if (!restaurant) {
+      return res.status(501).json("Restaurant not exist");
     }
-    if(!restaruant.menu){
-      return res.status(501).json("Restaruants menu is empty");
+    if (!restaurant.menu) {
+      return res.status(501).json("Restaurants menu is empty");
     }
-    if(!restaruant.menu.length === 0){
-      return res.status(501).json("Restaruants menu is empty");
+    if (!restaurant.menu.length === 0) {
+      return res.status(501).json("Restaurants menu is empty");
     }
     const menus = await Promise.all(
-      restaruant.menu.map(element => MenuModel.findById(element))
+      restaurant.menu.map((element) => MenuModel.findById(element))
     );
     return res.status(200).json(menus);
   } catch (err) {
@@ -90,7 +89,8 @@ app.get("/menus/:restaruantId", async (req, res) => {
 });
 app.post("/orders", async (req, res) => {
   try {
-    const { order_number, restaurant, items, address, total_price, tip } = req.body;
+    const { order_number, restaurant, items, address, total_price, tip } =
+      req.body;
 
     const newOrder = new OrderModel({
       order_number,
