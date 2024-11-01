@@ -69,7 +69,7 @@ app.get("/user/:id", async (req, res) => {
 app.get("/menus/:restaurantId", async (req, res) => {
   const id = req.params.restaurantId;
   try {
-    let restaurant = await RestaurantModel.findById(id);
+    let restaurant = await RestaurantModel.findById(id).populate("menu");
     if (!restaurant) {
       return res.status(501).json("Restaurant not exist");
     }

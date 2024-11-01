@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 function Restaurant() {
   const [restaurant, setRestaurant] = useState({});
+  const [menu, setMenu] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,6 +22,20 @@ function Restaurant() {
 
   console.log(restaurant);
 
+  useEffect(() => {
+    const fetchMenu = async () => {
+      try {
+        const response = await fetch(`http://localhost:8000/menus/${id}`);
+        const data = await response.json();
+        setMenu(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMenu();
+  }, [id]);
+
   return (
     <div>
       <div className="w-full h-32 bg-[#c2c2c2] mb-10 overflow-hidden">
@@ -30,34 +45,68 @@ function Restaurant() {
           className="object-cover w-full h-full"
         />
       </div>
-      <div className="translate-y-[-50%]">
-        <img
-          src="https://i.imgur.com/tpTbyMY.jpeg"
-          alt="restaurant logo"
-          className="mb-3 ml-5 border-4 border-white rounded-full size-32"
-        />
-        <div className="flex justify-between mx-5">
-          <div>
-            <h2 className="text-3xl font-bold">{restaurant.name}</h2>
-            <p className="text-[#888]">{restaurant.bio}</p>
+      <div className="-translate-y-28">
+        <div>
+          <img
+            src="https://i.imgur.com/tpTbyMY.jpeg"
+            alt="restaurant logo"
+            className="mb-3 ml-5 border-4 border-white rounded-full size-32"
+          />
+          <div className="flex justify-between mx-5">
+            <div>
+              <h2 className="text-3xl font-bold">{restaurant.name}</h2>
+              <p className="text-[#888]">{restaurant.bio}</p>
+            </div>
+            <div className="flex flex-col">
+              <p className="text-[#888]">
+                {restaurant.adress?.street +
+                  " " +
+                  restaurant.adress?.city +
+                  "," +
+                  " " +
+                  restaurant.adress?.zipcode}
+              </p>
+              <p className="text-[#888]">
+                <strong>Email:</strong> {restaurant.email}
+              </p>
+              <p className="text-[#888]">
+                {" "}
+                <strong>Phone:</strong> {restaurant.telephone}
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col">
-            <p className="text-[#888]">
-              {restaurant.adress?.street +
-                " " +
-                restaurant.adress?.city +
-                "," +
-                " " +
-                restaurant.adress?.zipcode}
-            </p>
-            <p className="text-[#888]">
-              <strong>Email:</strong> {restaurant.email}
-            </p>
-            <p className="text-[#888]">
-              {" "}
-              <strong>Phone:</strong> {restaurant.telephone}
-            </p>
-          </div>
+        </div>
+        <hr className="w-[90%] mx-auto my-5" />
+        <div>
+          {menu.map((item) => (
+            <div key={item._id} className="flex justify-between mx-5 mb-10">
+              <div>
+                <h3 className="text-xl font-bold">{item.name}</h3>
+                <p className="text-[#888]">{item.description}</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <p className="text-xl font-bold">${item.price.toFixed(2)}</p>
+                <div>
+                  <button className="bg-[#e67e22] text-xs size-6 text-white rounded-full mr-2">
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    name="quantity"
+                    id="quantity"
+                    value={1}
+                    className="w-10 px-2 rounded-full text-center"
+                  />
+                  <button className="bg-[#e67e22] text-xs size-6 text-white rounded-full ml-2">
+                    +
+                  </button>
+                </div>
+                <button className="px-6 py-3 bg-[#e67e22] text-white rounded-full font-semibold shadow hover:bg-[#cf711f] transition-colors duration-200">
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
