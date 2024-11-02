@@ -28,7 +28,10 @@ const CartModal = ({ isOpen, onClose }) => {
         </div>
         {cartItems.length > 0 && (
           <Link to="/checkout">
-            <button className="mt-8 px-6 py-3 bg-[#e67e22] text-white rounded-full font-semibold shadow hover:bg-[#cf711f] transition-colors duration-200">
+            <button
+              className="mt-8 px-6 py-3 bg-[#e67e22] text-white rounded-full font-semibold shadow hover:bg-[#cf711f] transition-colors duration-200"
+              onClick={onClose}
+            >
               Check out
             </button>
           </Link>
