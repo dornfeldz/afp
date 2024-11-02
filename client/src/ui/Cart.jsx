@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { Context } from "./AppLayout";
+import { Link } from "react-router-dom";
 
 const CartModal = ({ isOpen, onClose }) => {
   const { cartItems, setCartItems } = useContext(Context);
@@ -25,9 +26,13 @@ const CartModal = ({ isOpen, onClose }) => {
             ))}
           </ul>
         </div>
-        <button className="mt-8 px-6 py-3 bg-[#e67e22] text-white rounded-full font-semibold shadow hover:bg-[#cf711f] transition-colors duration-200">
-          Check out
-        </button>
+        {cartItems.length > 0 && (
+          <Link to="/checkout">
+            <button className="mt-8 px-6 py-3 bg-[#e67e22] text-white rounded-full font-semibold shadow hover:bg-[#cf711f] transition-colors duration-200">
+              Check out
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
