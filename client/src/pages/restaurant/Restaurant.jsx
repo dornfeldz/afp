@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import QuantityBtn from "./QuantityBtn";
 
 function Restaurant() {
   const [restaurant, setRestaurant] = useState({});
@@ -86,24 +87,7 @@ function Restaurant() {
               </div>
               <div className="flex items-center gap-4">
                 <p className="text-xl font-bold">${item.price.toFixed(2)}</p>
-                <div>
-                  <button className="bg-[#e67e22] text-xs size-6 text-white rounded-full mr-2">
-                    -
-                  </button>
-                  <input
-                    type="number"
-                    name="quantity"
-                    id="quantity"
-                    value={1}
-                    className="w-10 px-2 rounded-full text-center"
-                  />
-                  <button className="bg-[#e67e22] text-xs size-6 text-white rounded-full ml-2">
-                    +
-                  </button>
-                </div>
-                <button className="px-6 py-3 bg-[#e67e22] text-white rounded-full font-semibold shadow hover:bg-[#cf711f] transition-colors duration-200">
-                  Add to cart
-                </button>
+                <QuantityBtn item={item} />
               </div>
             </div>
           ))}

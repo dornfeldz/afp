@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { HiOutlineXMark } from "react-icons/hi2";
+import { Context } from "./AppLayout";
 
-const CartModal = ({ isOpen, onClose, cartItems }) => {
+const CartModal = ({ isOpen, onClose }) => {
+  const { cartItems, setCartItems } = useContext(Context);
+
   return (
     <div
-      className={`fixed top-0 right-0 h-full w-72 bg-white shadow-lg transform transition-transform duration-300 ${
+      className={`fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-lg transform transition-transform duration-300 ${
         isOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
@@ -17,7 +20,7 @@ const CartModal = ({ isOpen, onClose, cartItems }) => {
           <ul>
             {cartItems.map((item, index) => (
               <li key={index} className="mb-2">
-                {item.name} - ${item.price}
+                {item.name} - ${item.price} <strong> x{item.quantity}</strong>
               </li>
             ))}
           </ul>

@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { HiMagnifyingGlass, HiOutlineShoppingCart } from "react-icons/hi2";
-import CartModal from "./Cart"; // Import the CartModal component
+import CartModal from "./Cart";
 import { Link } from "react-router-dom";
 
 function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const toggleCart = () => setIsCartOpen(!isCartOpen);
   const cartItems = [
     { name: "Item 1", price: 10 },
     { name: "Item 2", price: 20 },
   ];
-
-  const toggleCart = () => setIsCartOpen(!isCartOpen);
-
   return (
     <div className="w-full flex items-center justify-between h-16 px-4 shadow-[0px_2px_4px_rgba(0,0,0,0.1)]">
       <Link to="/">
