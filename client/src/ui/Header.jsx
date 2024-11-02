@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { HiMagnifyingGlass, HiOutlineShoppingCart } from "react-icons/hi2";
 import CartModal from "./Cart";
 import { Link } from "react-router-dom";
+import { Context } from "./AppLayout";
 
 function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const { cartItems } = useContext(Context);
   const toggleCart = () => setIsCartOpen(!isCartOpen);
-  const cartItems = [
-    { name: "Item 1", price: 10 },
-    { name: "Item 2", price: 20 },
-  ];
+
   return (
     <div className="w-full flex items-center justify-between h-16 px-4 shadow-[0px_2px_4px_rgba(0,0,0,0.1)]">
       <Link to="/">
@@ -40,12 +39,19 @@ function Header() {
             className="w-10 h-10 border-2 border-white rounded-full"
           />
         </Link>
-        <button
-          onClick={toggleCart}
-          className="flex items-center justify-center text-2xl border-2 border-white rounded-full size-10"
-        >
-          <HiOutlineShoppingCart />
-        </button>
+        <div className="relative">
+          <button
+            onClick={toggleCart}
+            className="flex items-center justify-center text-2xl border-2 border-white rounded-full size-10"
+          >
+            <HiOutlineShoppingCart />
+          </button>
+          {cartItems.length > 0 && (
+            <span className="absolute -top-1 -right-1 bg-[#e67e22] text-white text-xs font-semibold rounded-full px-1">
+              {cartItems.length}
+            </span>
+          )}
+        </div>
       </div>
       <CartModal
         isOpen={isCartOpen}
