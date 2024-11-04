@@ -6,16 +6,122 @@ const RestaurantModel = require("./models/Restaurants");
 const UserModel = require("./models/Users");
 const OrderModel = require("./models/Orders");
 const MenuModel = require("./models/Menu");
+const UserModel = require("./models/Users");
+const session = require("express-session");
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 require("dotenv").config();
-const { MONGO_URL } = process.env;
+/*const { MONGO_URL } = process.env;
 
+if (!MONGO_URL) {
+  console.error("Missing MONGO_URL environment variable");
+  process.exit(1);
+}*/
+
+const { MONGO_URL, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env;
+// Auth begin *******************************************************************************************
 if (!MONGO_URL) {
   console.error("Missing MONGO_URL environment variable");
   process.exit(1);
 }
 
 const app = express();
+
+//Session beállítása
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  }))
+
+  //Passport beállítása
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  //Passport szerializálása
+
+  passport.serializeUser((user, done) => {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(async (id, done) => {
+    try {
+      const user = await UserModel.findById(id);
+      done(null, user);
+    } catch (err) {
+      done(err, null);
+    }
+  });
+
+  //Google OAuth Strategy beállítása
+
+  passport.use(
+    new GoogleStrategy({
+      clientID: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET,
+      callbackURL: "http://localhost:8000/auth/google/callback",
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        // Ell. hogy létezik e a felhasználó
+        let user = await UserModel.findOne({ googleId: profile.id });
+        if (!user) {
+          // Ha nem létezik, új felhasználót hoz létre
+          user = await UserModel.create({
+            googleId: profile.id,
+            name: profile.name.givenName,
+            email: profile.emails[0].value,
+            picture: profile.photos[0].value,
+          });
+        }
+        done(null, user);
+      } catch (err) {
+        return done(err, null);
+      }
+    }
+  )
+);
+
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}
+));
+
+//Auth Routes
+
+app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+app.get("/auth/google/callback", passport.authenticate("google", { successRedirect: "http://localhost:3000/dashboard", failureRedirect: "http://localhost:3000/login" }));
+
+// Auth ellenörző middleware
+
+const isAuth = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  return res.status(401).json({error: "Ön nincs bejeletkezve!"});
+}
+
+// Kijelentkezés route
+
+app.get("/logout", (req, res) => {
+  req.logout(() => {
+    res.redirect("http://localhost:3000/");
+  });
+});
+
+// Jelenlegi felhasználó lekérése
+
+app.get("/auth/current-user", isAuth, (req, res) => {
+  res.json(req.user);
+});
+
+//Auth end *******************************************************************************************
+
 
 app.use(cors());
 app.use(express.json());
