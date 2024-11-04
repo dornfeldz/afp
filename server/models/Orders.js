@@ -5,9 +5,9 @@ const ordersSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    restaurant: {
+    users: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Restaurant"
+        ref: "Users"
     },
     items: [
         {
