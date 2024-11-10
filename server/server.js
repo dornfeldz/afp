@@ -6,7 +6,6 @@ const RestaurantModel = require("./models/Restaurants");
 const UserModel = require("./models/Users");
 const OrderModel = require("./models/Orders");
 const MenuModel = require("./models/Menu");
-const UserModel = require("./models/Users");
 const session = require("express-session");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
@@ -35,32 +34,34 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-  }))
+  })
+);
 
-  //Passport beállítása
+//Passport beállítása
 
-  app.use(passport.initialize());
-  app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-  //Passport szerializálása
+//Passport szerializálása
 
-  passport.serializeUser((user, done) => {
-    done(null, user.id);
-  });
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
 
-  passport.deserializeUser(async (id, done) => {
-    try {
-      const user = await UserModel.findById(id);
-      done(null, user);
-    } catch (err) {
-      done(err, null);
-    }
-  });
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await UserModel.findById(id);
+    done(null, user);
+  } catch (err) {
+    done(err, null);
+  }
+});
 
-  //Google OAuth Strategy beállítása
+//Google OAuth Strategy beállítása
 
-  passport.use(
-    new GoogleStrategy({
+passport.use(
+  new GoogleStrategy(
+    {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: "http://localhost:8000/auth/google/callback",
@@ -86,16 +87,26 @@ app.use(
   )
 );
 
-app.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true
-}
-));
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 //Auth Routes
 
-app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
-app.get("/auth/google/callback", passport.authenticate("google", { successRedirect: "http://localhost:3000/dashboard", failureRedirect: "http://localhost:3000/login" }));
+app.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "http://localhost:3000/dashboard",
+    failureRedirect: "http://localhost:3000/login",
+  })
+);
 
 // Auth ellenörző middleware
 
@@ -103,8 +114,8 @@ const isAuth = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
-  return res.status(401).json({error: "Ön nincs bejeletkezve!"});
-}
+  return res.status(401).json({ error: "Ön nincs bejeletkezve!" });
+};
 
 // Kijelentkezés route
 
@@ -121,7 +132,6 @@ app.get("/auth/current-user", isAuth, (req, res) => {
 });
 
 //Auth end *******************************************************************************************
-
 
 app.use(cors());
 app.use(express.json());
@@ -219,7 +229,7 @@ const main = async () => {
   await mongoose.connect(MONGO_URL);
 
   app.listen(PORT, () => {
-    console.log(`server is running on port ${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
   });
 };
 
