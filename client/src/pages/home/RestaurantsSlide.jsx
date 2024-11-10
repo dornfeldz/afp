@@ -18,7 +18,6 @@ function RestaurantsSlide({ title, reverse }) {
     fetchRestaurants();
   }, []);
 
-  console.log(restaurants);
   return (
     <div className="mb-12 ">
       <h2 className="ml-5 text-2xl font-semibold">{title}</h2>

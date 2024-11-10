@@ -11,6 +11,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 require("dotenv").config();
+
 /*const { MONGO_URL } = process.env;
 
 if (!MONGO_URL) {
@@ -26,6 +27,7 @@ if (!MONGO_URL) {
 }
 
 const app = express();
+app.use(cors());
 
 //Session beállítása
 
@@ -45,6 +47,7 @@ app.use(passport.session());
 //Passport szerializálása
 
 passport.serializeUser((user, done) => {
+  console.log("Serializing user:", user);
   done(null, user.id);
 });
 
@@ -67,6 +70,7 @@ passport.use(
       callbackURL: "http://localhost:8000/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
       try {
         // Ell. hogy létezik e a felhasználó
         let user = await UserModel.findOne({ googleId: profile.id });
@@ -74,11 +78,13 @@ passport.use(
           // Ha nem létezik, új felhasználót hoz létre
           user = await UserModel.create({
             googleId: profile.id,
-            name: profile.name.givenName,
+            first_name: profile.name.givenName,
+            last_name: profile.name.familyName,
             email: profile.emails[0].value,
             picture: profile.photos[0].value,
           });
         }
+        console.log("User:", user);
         done(null, user);
       } catch (err) {
         return done(err, null);
@@ -89,7 +95,7 @@ passport.use(
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
@@ -103,18 +109,19 @@ app.get(
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:3000/dashboard",
-    failureRedirect: "http://localhost:3000/login",
+    successRedirect: "http://localhost:5173",
+    failureRedirect: "http://localhost:5173/login",
   })
 );
 
 // Auth ellenörző middleware
 
 const isAuth = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  return res.status(401).json({ error: "Ön nincs bejeletkezve!" });
+  // if (req.isAuthenticated()) {
+  //   return next();
+  // }
+  // return res.status(401).json({ error: "Ön nincs bejeletkezve!" });
+  return next();
 };
 
 // Kijelentkezés route
@@ -128,12 +135,12 @@ app.get("/logout", (req, res) => {
 // Jelenlegi felhasználó lekérése
 
 app.get("/auth/current-user", isAuth, (req, res) => {
+  console.log(req.user);
   res.json(req.user);
 });
 
 //Auth end *******************************************************************************************
 
-app.use(cors());
 app.use(express.json());
 
 app.get("/restaurants", async (req, res) => {

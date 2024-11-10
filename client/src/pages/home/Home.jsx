@@ -10,12 +10,36 @@ function Home() {
     }
   };
 
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/auth/current-user",
+          {
+            credentials: "include",
+          }
+        );
+        if (response.ok) {
+          const userData = await response.json();
+          console.log("User data:", userData);
+          setUser(userData);
+        }
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+      }
+    };
+    fetchUser();
+  }, []);
+
   return (
     <div>
       <div className="flex flex-col md:flex-row items-center justify-between w-[80%] max-w-5xl mx-auto mt-16 px-4 mb-10">
         <div className="md:w-[50%] text-center md:text-left">
           <h1 className="text-5xl font-extrabold">
-            Welcome to Tasty<span className="text-[#e67e22]">Go</span>
+            Welcome to Tasty
+            <span className="text-[#e67e22]">Go</span>, {user.first_name}!
           </h1>
           <p className="mt-6 text-lg text-[#888]">
             Order food from your favorite restaurants

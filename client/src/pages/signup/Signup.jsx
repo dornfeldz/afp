@@ -5,10 +5,22 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted", { username, email, password });
+    try {
+      const response = await fetch("http://localhost:8000/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
+      });
+      if (response.ok) {
+        window.location.href = "/login";
+      } else {
+        console.log("Signup failed");
+      }
+    } catch (error) {
+      console.error("Error signing up:", error);
+    }
   };
 
   return (
@@ -62,6 +74,14 @@ function Signup() {
             Signup
           </button>
         </form>
+        <button
+          onClick={() =>
+            (window.location.href = "http://localhost:8000/auth/google")
+          }
+          className="flex px-6 py-3 mx-auto mt-4 font-semibold text-white transition-colors duration-200 bg-blue-500 rounded-full shadow hover:bg-blue-600"
+        >
+          Sign in with Google
+        </button>
       </div>
     </div>
   );
