@@ -3,6 +3,7 @@ import { HiMagnifyingGlass, HiOutlineShoppingCart } from "react-icons/hi2";
 import CartModal from "./Cart";
 import { Link } from "react-router-dom";
 import { Context } from "./AppLayout";
+import LogoutButton from "./LogoutButton";
 
 function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -39,6 +40,7 @@ function Header() {
             className="w-10 h-10 border-2 border-white rounded-full"
           />
         </Link>
+        <LogoutButton />
         <div className="relative">
           <button
             onClick={toggleCart}

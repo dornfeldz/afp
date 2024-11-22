@@ -21,6 +21,23 @@ if (!MONGO_URL) {
 
 const { MONGO_URL, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env;
 // Auth begin *******************************************************************************************
+const jwt = require("jsonwebtoken");
+
+const generateToken = (user) => {
+  const payload = {
+    userId: user.id,
+    email: user.email,
+  };
+
+  const secretKey = process.env.SESSION_SECRET;
+
+  const options = {
+    expiresIn: "1h",
+  };
+
+  return jwt.sign(payload, secretKey, options);
+};
+
 if (!MONGO_URL) {
   console.error("Missing MONGO_URL environment variable");
   process.exit(1);
@@ -109,9 +126,12 @@ app.get(
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:5173",
     failureRedirect: "http://localhost:5173/login",
-  })
+  }),
+  (req, res) => {
+    const token = generateToken(req.user);
+    res.redirect(`http://localhost:5173?token=${token}`);
+  }
 );
 
 // Auth ellenörző middleware
@@ -128,7 +148,7 @@ const isAuth = (req, res, next) => {
 
 app.get("/logout", (req, res) => {
   req.logout(() => {
-    res.redirect("http://localhost:3000/");
+    res.redirect("http://localhost:5173/login");
   });
 });
 

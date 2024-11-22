@@ -1,9 +1,13 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useNavigate,
+} from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
 import Home from "./pages/home/Home";
 import CartModal from "./ui/Cart";
 import Restaurant from "./pages/restaurant/Restaurant";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Contact from "./pages/footer pages/contact/Contact";
 import TermsAndConditions from "./pages/footer pages/terms-and-conditions/TermsAndConditions";
 import PrivacyPolicy from "./pages/footer pages/privacy-policy/PrivacyPolicy";
@@ -13,65 +17,132 @@ import ForDeliveryStaff from "./pages/footer pages/for-delivery-staff/ForDeliver
 import Signup from "./pages/signup/Signup";
 import Profile from "./pages/profile/Profile";
 import Checkout from "./pages/checkout/Checkout";
+import Login from "./pages/login/Login";
+import { AuthContext, AuthProvider } from "./auth/AuthContext";
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />,
+    element: (
+      <ProtectedRoute>
+        <AppLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/restaurant/:id",
-        element: <Restaurant />,
+        element: (
+          <ProtectedRoute>
+            <Restaurant />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: (
+          <ProtectedRoute>
+            <Contact />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/terms-and-conditions",
-        element: <TermsAndConditions />,
+        element: (
+          <ProtectedRoute>
+            <TermsAndConditions />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/privacy-policy",
-        element: <PrivacyPolicy />,
+        element: (
+          <ProtectedRoute>
+            <PrivacyPolicy />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/career",
-        element: <Career />,
+        element: (
+          <ProtectedRoute>
+            <Career />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/for-customers",
-        element: <ForCustomers />,
+        element: (
+          <ProtectedRoute>
+            <ForCustomers />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/for-delivery-staff",
-        element: <ForDeliveryStaff />,
+        element: (
+          <ProtectedRoute>
+            <ForDeliveryStaff />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: (
+          <ProtectedRoute>
+            <Checkout />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
   {
     path: "/signup",
-    element: <Signup />,
+    element: <Signup />, // No protection needed
+  },
+  {
+    path: "/login",
+    element: <Login />, // No protection needed
   },
 ]);
 
 function App() {
+  const [authState, setAuthState] = useState(null); // null = loading, true/false = authenticated
+
+  // Handle the token on page load
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setAuthState(true); // User is authenticated
+    } else {
+      setAuthState(false); // User is not authenticated
+    }
+  }, []);
+
+  if (authState === null) {
+    return <div>Loading...</div>; // Show loading spinner while auth state is being determined
+  }
+
   return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
+    <AuthContext.Provider value={{ authState, setAuthState }}>
+      <RouterProvider router={router} /> {/* The router provided here */}
+    </AuthContext.Provider>
   );
 }
 
