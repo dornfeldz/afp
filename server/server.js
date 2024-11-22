@@ -125,13 +125,14 @@ app.get(
 );
 app.get(
   "/auth/google/callback",
+  (req, res, next) => {
+    res.set("Cache-Control", "no-store");
+    next();
+  },
   passport.authenticate("google", {
+    successRedirect: "http://localhost:5173", // Redirect to frontend home page
     failureRedirect: "http://localhost:5173/login",
-  }),
-  (req, res) => {
-    const token = generateToken(req.user);
-    res.redirect(`http://localhost:5173?token=${token}`);
-  }
+  })
 );
 
 // Auth ellenörző middleware

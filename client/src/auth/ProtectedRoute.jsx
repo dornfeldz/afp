@@ -1,23 +1,23 @@
-import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // useNavigate inside Router context
-import { AuthContext } from "../auth/AuthContext";
+import { useEffect } from "react";
+import { useAuth } from "../auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const { authState } = useContext(AuthContext);
-  const navigate = useNavigate(); // This is now working as the component is under Router context
+  const { authState } = useAuth();
+  const navigate = useNavigate();
 
-  // This useEffect handles the redirection if the user is not authenticated
   useEffect(() => {
     if (authState === false) {
-      navigate("/login"); // Redirect to login page if the user is not authenticated
+      console.log("Unauthenticated, redirecting to login");
+      navigate("/login"); // Redirect to login if unauthenticated
     }
   }, [authState, navigate]);
 
   if (authState === null) {
-    return <div>Loading...</div>; // Show loading spinner while checking auth state
+    return <div>Loading...</div>; // Show loading while auth state is determining
   }
 
-  return authState ? children : null; // Render protected content only if authenticated
+  return authState ? children : null; // Show protected content if authenticated
 };
 
 export default ProtectedRoute;
