@@ -114,34 +114,33 @@ const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <Signup />, // No protection needed
+    element: <Signup />,
   },
   {
     path: "/login",
-    element: <Login />, // No protection needed
+    element: <Login />,
   },
 ]);
 
 function App() {
-  const [authState, setAuthState] = useState(null); // null = loading, true/false = authenticated
+  const [authState, setAuthState] = useState(null);
 
-  // Handle the token on page load
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      setAuthState(true); // User is authenticated
+      setAuthState(true);
     } else {
-      setAuthState(false); // User is not authenticated
+      setAuthState(false);
     }
   }, []);
 
   if (authState === null) {
-    return <div>Loading...</div>; // Show loading spinner while auth state is being determined
+    return <div>Loading...</div>;
   }
 
   return (
     <AuthProvider value={{ authState, setAuthState }}>
-      <RouterProvider router={router} /> {/* The router provided here */}
+      <RouterProvider router={router} />
     </AuthProvider>
   );
 }

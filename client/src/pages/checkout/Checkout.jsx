@@ -12,9 +12,39 @@ function Checkout() {
     return acc + item.price * item.quantity;
   }, 0);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const order = {
+      order_number: Math.floor(Math.random() * 1000000),
+      users: "user_id",
+      items: cartItems,
+      address: { street, city, zipcode },
+      tip: tip,
+      total_price: totalPrice + tip,
+    };
+
+    try {
+      const response = await fetch("http://localhost:8000/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(order),
+      });
+
+      if (response.ok) {
+        console.log("Order successfully placed:", order);
+        setCartItems([]);
+      } else {
+        console.error("Failed to place order:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error while placing order:", error);
+    }
+  };
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl font-semibold mb-4">Checkout</h2>
+    <div className="container px-4 py-8 mx-auto">
+      <h2 className="mb-4 text-2xl font-semibold">Checkout</h2>
       <ul>
         {cartItems.map((item, index) => (
           <li key={index} className="mb-2">
@@ -22,8 +52,8 @@ function Checkout() {
           </li>
         ))}
       </ul>
-      <h2 className="text-xl font-semibold mt-8 mb-2 ml-1">Delivery address</h2>
-      <form>
+      <h2 className="mt-8 mb-2 ml-1 text-xl font-semibold">Delivery address</h2>
+      <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-4">
           <input
             type="text"
@@ -31,6 +61,8 @@ function Checkout() {
             id="street"
             placeholder="Street"
             className="p-2 border border-gray-300 rounded-full"
+            value={street}
+            onChange={(e) => setStreet(e.target.value)}
           />
           <input
             type="text"
@@ -38,6 +70,8 @@ function Checkout() {
             id="city"
             placeholder="City"
             className="p-2 border border-gray-300 rounded-full"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
           />
           <input
             type="text"
@@ -45,17 +79,19 @@ function Checkout() {
             id="zipcode"
             placeholder="Zipcode"
             className="p-2 border border-gray-300 rounded-full"
+            value={zipcode}
+            onChange={(e) => setZipcode(e.target.value)}
           />
         </div>
       </form>
-      <h2 className="text-xl font-semibold mt-8 mb-2 ml-1">Tip</h2>
+      <h2 className="mt-8 mb-2 ml-1 text-xl font-semibold">Tip</h2>
       <input
         type="number"
         name="tip"
         id="tip"
+        className="p-2 border border-gray-300 rounded-full"
         value={tip}
         onChange={(e) => setTip(e.target.value)}
-        className="p-2 border border-gray-300 rounded-full"
       />
 
       <h2 className="mt-6 ml-1 text-xl font-bold">
@@ -64,6 +100,7 @@ function Checkout() {
       <button
         type="submit"
         className="mt-3 px-6 py-3 bg-[#e67e22] text-white rounded-full font-semibold shadow hover:bg-[#cf711f] transition-colors duration-200"
+        onClick={handleSubmit}
       >
         Place order
       </button>

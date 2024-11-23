@@ -21,8 +21,6 @@ function Restaurant() {
     fetchRestaurant();
   }, [id]);
 
-  console.log(restaurant);
-
   useEffect(() => {
     const fetchMenu = async () => {
       try {
