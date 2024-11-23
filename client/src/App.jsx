@@ -140,9 +140,9 @@ function App() {
   }
 
   return (
-    <AuthContext.Provider value={{ authState, setAuthState }}>
+    <AuthProvider value={{ authState, setAuthState }}>
       <RouterProvider router={router} /> {/* The router provided here */}
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 

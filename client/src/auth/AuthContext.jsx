@@ -1,25 +1,27 @@
-// auth/AuthContext.jsx
-import { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 // Create the AuthContext
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
-// AuthProvider component to wrap around your app
+// AuthProvider Component to wrap the app
 export const AuthProvider = ({ children }) => {
-  const [authState, setAuthState] = useState(null); // null for loading, true/false for authenticated
+  const [authState, setAuthState] = useState(false); // Manage authentication state
 
-  useEffect(() => {
-    // Check if there's a token in localStorage (or cookies, depending on your setup)
-    const token = localStorage.getItem("token");
-    setAuthState(!!token); // If token exists, authState is true, else false
-  }, []);
+  const login = () => setAuthState(true); // Mock login function
+  const logout = () => setAuthState(false); // Mock logout function
 
   return (
-    <AuthContext.Provider value={{ authState, setAuthState }}>
-      {children}{" "}
-      {/* This will allow the context to be accessed in child components */}
+    <AuthContext.Provider value={{ authState, login, logout }}>
+      {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+// Custom hook for accessing AuthContext
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+};

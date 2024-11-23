@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../auth/AuthContext";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -23,6 +24,14 @@ function Login() {
     } catch (error) {
       console.error("Error logging in:", error);
     }
+  };
+
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    login();
+    navigate("/"); // Redirect to home page
   };
 
   return (
@@ -71,15 +80,14 @@ function Login() {
           </div>
           <button
             type="submit"
+            onClick={handleLogin}
             className="mt-8 px-6 py-3 bg-[#e67e22] text-white rounded-full font-semibold shadow hover:bg-[#cf711f] transition-colors duration-200 flex mx-auto"
           >
-            Signup
+            Sign in
           </button>
         </form>
         <button
-          onClick={() =>
-            (window.location.href = "http://localhost:8000/auth/google")
-          }
+          onClick={() => handleLogin}
           className="flex px-6 py-3 mx-auto mt-4 font-semibold text-white transition-colors duration-200 bg-blue-500 rounded-full shadow hover:bg-blue-600"
         >
           Sign in with Google
