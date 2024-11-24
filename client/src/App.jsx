@@ -20,6 +20,7 @@ import Checkout from "./pages/checkout/Checkout";
 import Login from "./pages/login/Login";
 import { AuthContext, AuthProvider } from "./auth/AuthContext";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import Order from "./pages/order/Order";
 
 const router = createBrowserRouter([
   {
@@ -107,6 +108,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Checkout />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/order",
+        element: (
+          <ProtectedRoute>
+            <Order />
           </ProtectedRoute>
         ),
       },

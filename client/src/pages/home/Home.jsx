@@ -41,7 +41,7 @@ function Home() {
         <div className="md:w-[50%] text-center md:text-left">
           <h1 className="text-5xl font-extrabold">
             Welcome to Tasty
-            <span className="text-[#e67e22]">Go</span>, {user?.first_name}!
+            <span className="text-[#e67e22]">Go</span>!
           </h1>
           <p className="mt-6 text-lg text-[#888]">
             Order food from your favorite restaurants

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Context } from "../../ui/AppLayout";
+import { useNavigate } from "react-router-dom";
 
 function Checkout() {
   const { cartItems, setCartItems } = useContext(Context);
@@ -7,6 +8,8 @@ function Checkout() {
   const [city, setCity] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [tip, setTip] = useState(5);
+
+  const navigate = useNavigate();
 
   const totalPrice = cartItems.reduce((acc, item) => {
     return acc + item.price * item.quantity;
@@ -33,6 +36,7 @@ function Checkout() {
 
       if (response.ok) {
         console.log("Order successfully placed:", order);
+        navigate("/order", { state: { order } });
         setCartItems([]);
       } else {
         console.error("Failed to place order:", response.statusText);
