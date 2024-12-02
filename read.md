@@ -1,3 +1,13 @@
+<!-- CONTRIBUTING -->
+### Contributors:
+
+<a href="https://github.com/dornfeldz/afp/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=dornfeldz/afp" alt="contrib.rocks image" />
+</a>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 <!-- CONTACT -->
 ## Contact
 
