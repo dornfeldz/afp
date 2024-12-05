@@ -95,7 +95,7 @@ cd ../client && npm install
 - Never commit `.env` to version control
 - Use `.gitignore` to exclude sensitive files
 - Keep environment-specific configurations separate
-```
+
 
 
 <!-- CONTRIBUTING -->
