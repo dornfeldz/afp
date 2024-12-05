@@ -16,8 +16,6 @@ Navigate to both client and server folders and install dependencies:
 cd client
 npm install
 `
-
-```bash
 git clone <repository-url>
 cd <repository-folder>
 
