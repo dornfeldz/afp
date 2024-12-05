@@ -1,3 +1,27 @@
+# Setting Up the MERN App Locally
+
+## Prerequisites
+1. **Node.js**: Install Node.js (version 16 or higher recommended).
+2. **MongoDB**: Set up MongoDB on your local machine or use a cloud service (e.g., MongoDB Atlas).
+3. **Git**: Install Git to clone the repository.
+4. **Package Manager**: Use `npm` (comes with Node.js) or `yarn`.
+
+---
+
+## Getting Started
+
+### 1. Clone the Repository
+Navigate to both client and server folders and install dependencies:
+`
+cd client
+npm install
+`
+
+```bash
+git clone <repository-url>
+cd <repository-folder>
+
+
 <!-- CONTRIBUTING -->
 ### Contributors:
 
