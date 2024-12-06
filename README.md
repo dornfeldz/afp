@@ -1,5 +1,23 @@
 # Setting Up Project Locally
 
+## Features
+
+- **Online Food Ordering Platform** with a modern, responsive, and user-friendly design.
+- **User Profiles**, including login and registration functionality.
+- **Restaurant Listings** organized by categories.
+- **Restaurant Details** with images, menus, and titles.
+- **Cart Functionality** for users to collect food items they want to order.
+- Ability to **Place Orders from Multiple Restaurants** simultaneously.
+- **Order Submission** with a unique order identifier.
+- **Order Storage** in the database.
+- **Feedback for Successful Order Submission**.
+- Dedicated pages for:
+  - **Terms of Service**
+  - **Privacy Policy**
+  - **For Customers**
+  - **For Staff**
+  - **Careers**
+
 ## Prerequisites
 1. **Node.js**: Install Node.js (version 16 or higher recommended).
 2. **MongoDB**: Use a cloud service (e.g., MongoDB Atlas).
