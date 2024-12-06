@@ -123,8 +123,6 @@ cd ../client && npm install
   <img src="https://contrib.rocks/image?repo=dornfeldz/afp" alt="contrib.rocks image" />
 </a>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- CONTACT -->
 ## Contact
@@ -136,4 +134,3 @@ Péter Juhász - [[GitHub]](https://github.com/realpeoplerealproblem)
 
 Project Link: [[TastyGo]](https://github.com/dornfeldz/afp)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
