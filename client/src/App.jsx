@@ -1,6 +1,149 @@
 import {
   createBrowserRouter,
   RouterProvider,
+} from "react-router-dom";
+import AppLayout from "./ui/AppLayout";
+import Home from "./pages/home/Home";
+import CartModal from "./ui/Cart";
+import Restaurant from "./pages/restaurant/Restaurant";
+import Contact from "./pages/footer pages/contact/Contact";
+import TermsAndConditions from "./pages/footer pages/terms-and-conditions/TermsAndConditions";
+import PrivacyPolicy from "./pages/footer pages/privacy-policy/PrivacyPolicy";
+import Career from "./pages/footer pages/career/Career";
+import ForCustomers from "./pages/footer pages/for-customers/ForCustomers";
+import ForDeliveryStaff from "./pages/footer pages/for-delivery-staff/ForDeliveryStaff";
+import Signup from "./pages/signup/Signup";
+import Profile from "./pages/profile/Profile";
+import Checkout from "./pages/checkout/Checkout";
+import Login from "./pages/login/Login";
+import Order from "./pages/order/Order";
+import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <SignedIn>
+        <AppLayout />
+      </SignedIn>
+    ),
+    children: [
+      {
+        path: "/",
+        element: (
+          <SignedIn>
+            <Home />
+          </SignedIn>
+        ),
+      },
+      {
+        path: "/restaurant/:id",
+        element: (
+          <SignedIn>
+            <Restaurant />
+          </SignedIn>
+        ),
+      },
+      {
+        path: "/contact",
+        element: (
+          <SignedIn>
+            <Contact />
+          </SignedIn>
+        ),
+      },
+      {
+        path: "/terms-and-conditions",
+        element: (
+          <SignedIn>
+            <TermsAndConditions />
+          </SignedIn>
+        ),
+      },
+      {
+        path: "/privacy-policy",
+        element: (
+          <SignedIn>
+            <PrivacyPolicy />
+          </SignedIn>
+        ),
+      },
+      {
+        path: "/career",
+        element: (
+          <SignedIn>
+            <Career />
+          </SignedIn>
+        ),
+      },
+      {
+        path: "/for-customers",
+        element: (
+          <SignedIn>
+            <ForCustomers />
+          </SignedIn>
+        ),
+      },
+      {
+        path: "/for-delivery-staff",
+        element: (
+          <SignedIn>
+            <ForDeliveryStaff />
+          </SignedIn>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <SignedIn>
+            <Profile />
+          </SignedIn>
+        ),
+      },
+      {
+        path: "/checkout",
+        element: (
+          <SignedIn>
+            <Checkout />
+          </SignedIn>
+        ),
+      },
+      {
+        path: "/order",
+        element: (
+          <SignedIn>
+            <Order />
+          </SignedIn>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+]);
+
+function App() {
+  return (
+    <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+      <RouterProvider router={router} />
+    </ClerkProvider>
+  );
+}
+
+export default App;
+
+/*import {
+  createBrowserRouter,
+  RouterProvider,
   useNavigate,
 } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
@@ -154,4 +297,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;*/
