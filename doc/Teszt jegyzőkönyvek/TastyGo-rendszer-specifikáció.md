@@ -78,3 +78,8 @@ Az ételrendelési rendszer célja, hogy:
 - **Felhasználói tesztek:**
   - Beta-tesztelés kiválasztott felhasználókkal.
   - Hibabejelentési és javítási folyamat.
+
+## 9. Dokumentáció
+- **Fejlesztői dokumentáció:** API végpontok és adatbázismodell leírása.
+- **Felhasználói kézikönyv:** Útmutató képekkel és lépésekkel.
+- **Adminisztrációs kézikönyv:** Adminisztrátori funkciók leírása.
