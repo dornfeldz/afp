@@ -41,3 +41,7 @@ Az ételrendelési rendszer célja, hogy:
   - Kosárkezelés több éttermől.
   - Rendelés leadása.
 
+## 4. Időpontok
+- **Projektkezdet:** 2024. december 1.
+- **Első működő verzió:** 2024. december 20.
+- **Végleges bevezetés:** 2025. január 4.
