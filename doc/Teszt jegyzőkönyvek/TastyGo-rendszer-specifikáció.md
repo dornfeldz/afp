@@ -45,3 +45,10 @@ Az ételrendelési rendszer célja, hogy:
 - **Projektkezdet:** 2024. december 1.
 - **Első működő verzió:** 2024. december 20.
 - **Végleges bevezetés:** 2025. január 4.
+
+## 5. Erőforrások
+- **Csapat létszáma:** 4 fő.
+- **Verziókövető rendszer:** GitHub
+- **Projekt menedzsment:** Trello
+- **Technológiai eszközök:** Ingyenes keretrendszerek és könyvtárak (React, Express.js, MongoDB).
+- **Munkaidő:** Heti 40 óra / csapattag.
