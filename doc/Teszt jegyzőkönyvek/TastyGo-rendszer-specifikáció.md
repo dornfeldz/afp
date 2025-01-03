@@ -83,3 +83,11 @@ Az ételrendelési rendszer célja, hogy:
 - **Fejlesztői dokumentáció:** API végpontok és adatbázismodell leírása.
 - **Felhasználói kézikönyv:** Útmutató képekkel és lépésekkel.
 - **Adminisztrációs kézikönyv:** Adminisztrátori funkciók leírása.
+
+## 10. Monitoring és karbantartás
+- **Monitoring eszközök:**
+  - New Relic teljesítmény monitorozására.
+  - Logok gyűjtése és elemzése (pl. Elasticsearch és Kibana).
+- **Karbantartási terv:**
+  - Havonta egyszer tervezett karbantartás.
+  - Vészhelyzeti hibajavítások SLA-val meghatározva
