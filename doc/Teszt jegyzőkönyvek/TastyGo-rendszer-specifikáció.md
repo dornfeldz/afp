@@ -59,3 +59,11 @@ Az ételrendelési rendszer célja, hogy:
 - **Globális piac:** Terjeszkedés nemzetközi piacokra.
 - **Promóciók:** Akciók és kedvezmények kezelése.
 - **Szupermarket kiszállítás:** Bővítés az élelmiszerboltok kínálatával.
+
+## 7. Rendszerbiztonság és adatvédelem
+- **Adatvédelem:** Az alkalmazás megfelel az Európai Unió Általános Adatvédelmi Rendeletének (GDPR).
+- **Biztonsági intézkedések:**
+  - HTTPS protokoll minden adatátvitelhez.
+  - Felhasználói adatok titkosítása a MongoDB-ben.
+  - Kétlépcsős hitelesítés opcionális lehetőségként.
+  - Szerepköralapú hozzáférés-szabályozás.
