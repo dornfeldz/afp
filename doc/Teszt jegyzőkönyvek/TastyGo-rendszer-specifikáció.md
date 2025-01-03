@@ -11,3 +11,14 @@ Az elkészítendő rendszer egy ételrendelési platform, amely lehetővé teszi
 - **Rendelés visszaigazolása:** A leadott rendelések állapotának nyomon követése.
 
 A rendszer egy webes platformot biztosít, amely elérhető mobilböngészőben és asztali gépeken keresztül.
+
+## 2. Rendszer célja
+Az ételrendelési rendszer célja, hogy:
+
+- Megkönnyítse a felhasználók ételrendelési folyamatait.
+- Támogassa az éttermeket az online rendelések kezelésében.
+- Egyszerű és áttekinthető felületet biztosítson mind a felhasználók, mind az adminisztrátorok számára.
+- **Ügyfélélmény javítása:** Egy egyszerű, gyors és intuitív platform biztosítása az ételrendeléshez.
+- **Átlátható árak:** A rendszer biztosítja az árak, akciók és kedvezmények pontos megjelenítését.
+- **Helyi közösség támogatása:** Lehetővé teszi kisebb éttermek számára az online jelenlét megerősítését.
+
