@@ -22,3 +22,22 @@ Az ételrendelési rendszer célja, hogy:
 - **Átlátható árak:** A rendszer biztosítja az árak, akciók és kedvezmények pontos megjelenítését.
 - **Helyi közösség támogatása:** Lehetővé teszi kisebb éttermek számára az online jelenlét megerősítését.
 
+## 3. Rendszerterv
+
+### Technológiai alapok
+- **Frontend:** React keretrendszer.
+- **Backend:** Express.js.
+- **Adatbázis:** MongoDB.
+
+### Fő funkcionális modulok
+- **Felhasználói autentikáció**
+  - Regisztráció felhasználónév, email és jelszó alapján.
+  - Bejelentkezés és kijelentkezés.
+  - Felhasználói profilok kezelése.
+- **Étterem kezelés**
+  - Éttermek és kategóriáik megjelenítése a főoldalon.
+  - Egyedi étlapok megtekintése.
+- **Rendelés folyamat**
+  - Kosárkezelés több éttermől.
+  - Rendelés leadása.
+
