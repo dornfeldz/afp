@@ -91,3 +91,20 @@ Az ételrendelési rendszer célja, hogy:
 - **Karbantartási terv:**
   - Havonta egyszer tervezett karbantartás.
   - Vészhelyzeti hibajavítások SLA-val meghatározva
+
+## 11. Ütemterv
+
+| Funkció / Story          | Feladat / Task                | Prioritás | Becslés | Aktuális becslés | Eltelt idő | Hátralévő idő |
+|--------------------------|-------------------------------|-----------|---------|------------------|------------|---------------|
+| Követelmény specifikáció |                               | 0         | 12      | 12               | 12         | 0             |
+| Funkcionális specifikáció|                               | 0         | 12      | 12               | 12         | 0             |
+| Rendszerterv             |                               | 0         | 16      | 16               | 8          | 8             |
+| Adattárolás              | Adatmodell megtervezése      | 0         | 4       | 4                | 4          | 0             |
+| Adattárolás              | Adatbázis megvalósítása      | 1         | 1       | 1                | 0          | 1             |
+| Website                  | Képernyőtervek elkészítése   | 2         | 8       | 8                | 0          | 8             |
+| Website                  | Prototípus elkészítése       | 2         | 8       | 8                | 0          | 8             |
+| Website                  | Adatbázis létrehozása        | 2         | 8       | 8                | 0          | 8             |
+| Website                  | Menüstruktúra elkészítése    | 2         | 8       | 8                | 0          | 8             |
+| Honlap                   | Kezdőlap funkciók elkészítése| 2         | 8       | 8                | 0          | 8             |
+| Honlap                   | Login funkció megvalósítása  | 2         | 8       | 8                | 0          | 8             |
+| Website                  | Tesztelés                   | 2         | 16      | 16               | 0          | 16            |
