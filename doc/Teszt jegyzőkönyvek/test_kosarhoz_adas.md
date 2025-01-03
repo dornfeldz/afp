@@ -4,7 +4,7 @@ Tesztelést végezte: Dornfeld Zoltán
 Operációs rendszer: Windows 10
 Böngésző: Google Chrome
 Dátum: 2024.12.10.
-Talált hibák száma: 0
+Talált hibák száma: 1
 
 ## Kosárba helyezés funkció tesztelése
 
@@ -26,4 +26,4 @@ A kiválasztott tétel hozzáadódik a kosárhoz, a kosárban lévő elemek szá
 
 ### Teszt eredménye  
 **Pass**: A kiválasztott tétel helyesen hozzáadódik a kosárhoz.  
-**Fail**: A tétel nem jelenik meg a kosárban, vagy hibás adatok láthatóak. 
+**Fail**: A tétel nem jelenik meg a kosárban, a kosárban lévő elemek számát jelző szám nem jelenik meg, vagy hibás adatok láthatóak. 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HiMagnifyingGlass, HiOutlineShoppingCart } from "react-icons/hi2";
+import {  HiOutlineShoppingCart } from "react-icons/hi2";
 import CartModal from "./Cart";
 import { Link } from "react-router-dom";
 import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/clerk-react";
@@ -19,7 +19,7 @@ function Header() {
       </Link>
 
       {/* Search Bar */}
-      <form className="flex items-center">
+      {/* <form className="flex items-center">
         <input
           type="text"
           name="main"
@@ -33,7 +33,7 @@ function Header() {
         >
           <HiMagnifyingGlass className="text-[#fae5d3]" />
         </button>
-      </form>
+      </form> */}
 
       {/* User Section */}
       <div className="flex items-center gap-2">
