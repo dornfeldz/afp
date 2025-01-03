@@ -52,3 +52,10 @@ Az ételrendelési rendszer célja, hogy:
 - **Projekt menedzsment:** Trello
 - **Technológiai eszközök:** Ingyenes keretrendszerek és könyvtárak (React, Express.js, MongoDB).
 - **Munkaidő:** Heti 40 óra / csapattag.
+
+## 6. Jövőbeli fejlesztések
+- **Mobilalkalmazás:** Natív mobilalkalmazás fejlesztése.
+- **Többnyelvűség:** Támogatás több nyelven, kezdve angollal.
+- **Globális piac:** Terjeszkedés nemzetközi piacokra.
+- **Promóciók:** Akciók és kedvezmények kezelése.
+- **Szupermarket kiszállítás:** Bővítés az élelmiszerboltok kínálatával.
