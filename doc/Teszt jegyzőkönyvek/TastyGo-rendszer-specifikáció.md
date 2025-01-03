@@ -12,6 +12,23 @@ Az elkészítendő rendszer egy ételrendelési platform, amely lehetővé teszi
 
 A rendszer egy webes platformot biztosít, amely elérhető mobilböngészőben és asztali gépeken keresztül.
 
+## 1.2 Projektszerepkörök és felelősségek
+
+**Frontend fejlesztés:** Dornfeld Zoltán  
+Felelős a felhasználói felület megtervezéséért és implementálásáért, beleértve a reszponzív design elemeinek kidolgozását.
+
+**Tesztelés és bejelentkezési (login) funkciók:** Juhász Péter  
+Feladata a rendszer funkcionális és nem funkcionális tesztjeinek elvégzése, valamint a biztonságos és felhasználóbarát bejelentkezési modul kidolgozása.
+
+**Backend fejlesztés:** Egri Milán  
+Felelős a szerveroldali logika, az API-k és az adatkezelési folyamatok implementálásáért.
+
+**Adatbázis modell és adatbázis fejlesztés:** Haskó Sándor  
+Felelős az adatbázis struktúrájának tervezéséért, az adatok tárolásáért, valamint a hatékony lekérdezések biztosításáért.
+
+**Product Ownerek:** A csapat tagjai közösen (Dornfeld Zoltán, Juhász Péter, Egri Milán, Haskó Sándor)  
+Feladatunk volt a Product Backlog összeállítása, a prioritások meghatározása és az üzleti értékkel rendelkező felhasználói sztorik kidolgozása.
+
 ## 2. Rendszer célja
 Az ételrendelési rendszer célja, hogy:
 
