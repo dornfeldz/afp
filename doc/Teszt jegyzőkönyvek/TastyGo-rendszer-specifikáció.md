@@ -67,3 +67,14 @@ Az ételrendelési rendszer célja, hogy:
   - Felhasználói adatok titkosítása a MongoDB-ben.
   - Kétlépcsős hitelesítés opcionális lehetőségként.
   - Szerepköralapú hozzáférés-szabályozás.
+
+## 8. Tesztelési stratégia
+- **Egységtesztek:**
+  - React komponensek egységtesztjei Jest és React Testing Library segítségével.
+  - Backend API egységtesztjei Mocha vagy Jest keretrendszerrel.
+- **Integrációs tesztek:**
+  - Frontend és backend közötti kommunikáció ellenőrzése.
+  - Kosárkezelés és rendelési folyamat tesztelése.
+- **Felhasználói tesztek:**
+  - Beta-tesztelés kiválasztott felhasználókkal.
+  - Hibabejelentési és javítási folyamat.
